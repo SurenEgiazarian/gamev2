@@ -1,5 +1,5 @@
 {
-    "name": "skypro-web-dev-7.0-cardgame",
+    "name": "newgame-2",
     "version": "1.0.0",
     "description": "",
     "main": "cardgame.js",
@@ -12,14 +12,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/IvanoffAndrey/SkyPro-Web-Dev-7.0-CardGame.git"
+        "url": "git+https://github.com/SurenEgiazarian/gamev2"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/IvanoffAndrey/SkyPro-Web-Dev-7.0-CardGame/issues"
+        "url": "https://github.com/SurenEgiazarian/gamev2"
     },
-    "homepage": "https://github.com/IvanoffAndrey/SkyPro-Web-Dev-7.0-CardGame#readme",
+    "homepage": "https://github.com/SurenEgiazarian/gamev2",
     "devDependencies": {
         "copy-webpack-plugin": "^11.0.0",
         "css-loader": "^6.7.3",

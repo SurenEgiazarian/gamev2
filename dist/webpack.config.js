@@ -1,12 +1,10 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-
-const mode =
-    process.env.NODE_ENV === 'production' ? 'production' : 'development';
-
+"use strict";
+var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyPlugin = require('copy-webpack-plugin');
+var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+var CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+var mode = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 module.exports = {
     entry: './src/index.ts',
     mode: 'production',
@@ -49,8 +47,9 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: '/index.html',
+            template: './index.html',
         }),
         new MiniCssExtractPlugin(),
     ],
 };
+//# sourceMappingURL=webpack.config.js.map
