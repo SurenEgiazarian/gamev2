@@ -242,7 +242,67 @@ export class CardGame {
             cards.forEach((item) => {
                 item.setAttribute('src', './static/img/shirt.svg');
             });
+            this.cardСompare();
         }, 5000);
+    }
+
+    cardСompare() {
+        let timer = 0;
+        //let timerInterval;
+        let second = document.querySelector('.game__time-digit_sec');
+        let minute = document.querySelector('.game__time-digit_min');
+
+        let timerInterval = setInterval(function (this: CardGame) {
+            timer += 1 / 60;
+            this.sec = Math.floor(timer) - Math.floor(timer / 60) * 60;
+            this.min = Math.floor(timer / 60);
+            second!.textContent =
+                this.sec < 10 ? '0' + this.sec.toString() : this.sec.toString();
+            minute!.textContent =
+                this.min < 10 ? '0' + this.min.toString() : this.min.toString();
+        }, 1000 / 60);
+
+        let cardFirst: string | undefined = '';
+        let cardSecond: string | undefined = '';
+        let cardOpen = 0;
+        console.log(this.levels[Number(this.difficulty)]);
+        const field = document.querySelector('.game__card-field');
+        (field as HTMLElement).addEventListener('click', (event) => {
+            let target = event.target;
+            if ((target as HTMLElement).dataset.card && cardFirst === '') {
+                (target as HTMLElement).setAttribute(
+                    'src',
+                    `./static/img/${(target as HTMLElement).dataset.card}.svg`
+                );
+                cardFirst = (target as HTMLElement).dataset.card;
+                cardOpen++;
+                console.log(cardOpen);
+            } else if (
+                (target as HTMLElement).dataset.card &&
+                cardFirst !== '' &&
+                cardSecond === ''
+            ) {
+                (target as HTMLElement).setAttribute(
+                    'src',
+                    `./static/img/${(target as HTMLElement).dataset.card}.svg`
+                );
+                cardSecond = (target as HTMLElement).dataset.card;
+                cardOpen++;
+                console.log(cardOpen);
+
+                if (cardFirst === cardSecond) {
+                    cardFirst = '';
+                    cardSecond = '';
+                    if (cardOpen === this.levels[Number(this.difficulty)]) {
+                        this.win();
+                        clearInterval(timerInterval);
+                    }
+                } else {
+                    this.lose();
+                    clearInterval(timerInterval);
+                }
+            }
+        });
     }
 
     win() {
